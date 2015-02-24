@@ -21,16 +21,13 @@ void run(void) {
 	cm_file_init(f);
 	f->state = state;
 	if(owner) {
-		size_t bs = sizeof(f->owner);
-		strncpy(f->owner, owner, bs);
+		strcpy(f->owner, owner);
 	}
 	if(group) {
-		size_t bs = sizeof(f->group);
-		strncpy(f->group, group, bs);
+		strcpy(f->group, group);
 	}
 	if(mode) {
-		size_t bs = sizeof(f->mode);
-		strncpy(f->mode, mode, bs);
+		strcpy(f->mode, mode);
 	}
 	i = cm_file_set(path, f);
 	cm_file_deinit(f);
