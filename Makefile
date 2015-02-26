@@ -7,10 +7,10 @@ BINS	= $(addprefix cm-, $(notdir ${SRCS:.c=}))
 all: ${UOBJ} ${BINS}
 
 %.o: %.c
-	cc -c -std=c11 -pedantic -Wall -O0 -I. -I/usr/include -I/usr/local/include -o $@ $<
+	cc -c -std=c99 -pedantic -Wall -O0 -I. -I/usr/include -I/usr/local/include -o $@ $<
 
 cm-%: src/%.c
-	cc -g -std=c11 -pedantic -Wall -O0 -I. -I/usr/include -I/usr/local/include -Wl,-rpath=/usr/local/lib -L/usr/lib -lc -L/usr/local/lib -lconman -o src/$@ ${UOBJ} $<
+	cc -g -std=c99 -pedantic -Wall -O0 -I. -I/usr/include -I/usr/local/include -Wl,-rpath=/usr/local/lib -L/usr/lib -lc -L/usr/local/lib -lconman -o src/$@ ${UOBJ} $<
 
 install:
 	@install -d ${PREFIX}/bin
