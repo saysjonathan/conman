@@ -12,6 +12,7 @@ static int state = CM_PRESENT;
 static char *owner = NULL;
 static char *group = NULL;
 static char *mode = NULL;
+static int recurse = 0;
 static int noop = 0;
 static int verbose = 0;
 
@@ -20,6 +21,7 @@ void run(void) {
 	cm_dir *d = malloc(sizeof(cm_dir));
 	cm_dir_init(d);
 	d->state = state;
+	d->recurse = recurse;
 	if(owner) {
 		strcpy(d->owner, owner);
 	}
@@ -78,6 +80,7 @@ void usage(void) {
 			"\t-m, --mode MODE      dir mode (4 digit octal)\n"
 			"\t-n, --noop           print but do not commit changes\n"
 			"\t-o, --owner OWNER    dir owner\n"
+			"\t-r, --recurse        recursively manage directory contents\n"
 			"\t-v, --verbose        enable verbose output\n");
 	exit(EXIT_FAILURE);
 }
@@ -95,11 +98,12 @@ int main(int argc, char *argv[]) {
 		{"mode", required_argument, NULL, 'm'},
 		{"noop", no_argument, NULL, 'n'},
 		{"owner", required_argument, NULL, 'o'},
+		{"recurse", no_argument, NULL, 'r'},
 		{"verbose", no_argument, NULL, 'v'},
 		{NULL, 0, NULL, '\0'}
 	};
 
-	while((i = getopt_long(argc, argv, "ag:hm:no:t:v", lopts, NULL)) != -1) {
+	while((i = getopt_long(argc, argv, "ag:hm:no:rt:v", lopts, NULL)) != -1) {
 		switch(i) {
 			case 'a':
 				state = CM_ABSENT;
@@ -115,6 +119,9 @@ int main(int argc, char *argv[]) {
 				break;
 			case 'o':
 				owner = optarg;
+				break;
+			case 'r':
+				recurse = 1;
 				break;
 			case 'v':
 				verbose = 1;
