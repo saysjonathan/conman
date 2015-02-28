@@ -6,7 +6,7 @@ Configuration management binaries
 conman provides configuration management in the form of individual binaries. It provides a single binary per resource and enables more repeatable configuration management with shell scripts.
 
 ## Install
-conman depends on [libconman](github.com/virginops/libconman).
+conman depends on [libconman](https://github.com/virginops/libconman).
 
 	git clone git@github.com:virginops/libconman.git
 	cd libconman
