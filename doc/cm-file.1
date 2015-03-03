@@ -1,0 +1,50 @@
+.TH cm-file 1
+.SH NAME
+cm-file \- configuration managment for files
+.SH SYNOPSIS
+.B cm-file
+.RB [ \-a ]
+.RB [ \-g
+.IR group ]
+.RB [ \-m
+.IR mode ]
+.RB [ \-n ]
+.RB [ \-o
+.IR owner ]
+.RB [ \-s
+.IR source ]
+.RB [ \-v ]
+.I file
+.SH DESCRIPTION
+cm-file is a program for managing file state and configuration declaratively.
+.SH OPTIONS
+.TP
+.B \-a
+ensure file is absent
+.TP
+.B \-g group
+ensure file group is
+.I group
+.TP
+.B \-m mode
+ensure file mode is
+.I mode
+(4 digital octal format)
+.TP
+.B \-n
+noop run. Do not commit changes
+.TP
+.B \-o owner
+ensure file owner is
+.IR owner
+.TP
+.B \-s source
+ensure contents of
+.I file
+match the contents of
+.I source
+.TP
+.B \-v
+verbose output
+.SH AUTHORS
+Copyright \(co 2015 by Virgin Operators Society
