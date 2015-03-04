@@ -1,0 +1,35 @@
+.TH cm-group 1
+.SH NAME
+cm-group \- configuration managment for groups
+.SH SYNOPSIS
+.B cm-group
+.RB [ \-a ]
+.RB [ \-g
+.IR gid ]
+.RB [ \-n ]
+.RB [ \-p
+.IR password ]
+.RB [ \-v ]
+.I file
+.SH DESCRIPTION
+cm-group is a program for managing group state and configuration declaratively.
+.SH OPTIONS
+.TP
+.B \-a
+ensure group is absent
+.TP
+.B \-g gid
+ensure group gid is
+.I gid
+.TP
+.B \-n
+noop run. Do not commit changes
+.TP
+.B \-p pasword
+ensure group password is
+.I password
+.TP
+.B \-v
+verbose output
+.SH AUTHORS
+Copyright \(co 2015 by Virgin Operators Society
