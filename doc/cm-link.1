@@ -1,0 +1,44 @@
+.TH cm-link 1
+.SH NAME
+cm-dir \- configuration management for symlinks
+.SH SYNOPSIS
+.B cm-dir
+.RB [ \-a ]
+.RB [ \-g
+.IR group ]
+.RB [ -n ]
+.RB [ \-o
+.IR owner ]
+.RB [ \-v ]
+.RB -t
+.IR target
+.I link
+.SH DESCRIPTION
+cm-link is a program for decalratively managing symlink state and configuration.
+.SH OPTIONS
+.TP
+.B \-a
+ensure link is absent
+.TP
+.B \-g group
+ensure link group is
+.I group
+.TP
+.B \-h
+display help message
+.TP
+.B \-n
+noop run. Do not commit changes
+.TP
+.B \-o owner
+ensure link owner is
+.I owner
+.TP
+.B \-t target
+ensure link target is
+.I target
+.TP
+.B \-v
+verbose output
+.SH AUTHORS
+Copyright \(co 2015 by Virgin Operators Society
