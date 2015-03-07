@@ -1,5 +1,5 @@
 #include <string.h>
-#include "conman/conman.h"
+#include "conman.h"
 #include "../util.h"
 
 int diff_state(int s, int r, char *type, char *name) {

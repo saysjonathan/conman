@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "conman/conman.h"
+#include "conman.h"
 #include "util.h"
 
 static char *type = "[file]";
