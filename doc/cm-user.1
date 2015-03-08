@@ -1,0 +1,59 @@
+.TH cm-user 1
+.SH NAME
+cm-user \- configuration managment for users
+.SH SYNOPSIS
+.B cm-user
+.RB [ \-a ]
+.RB [ \-c
+.IR comment ]
+.RB [ \-n ]
+.RB [ \-p
+.IR password ]
+.RB [ \-u
+.IR uid ]
+.RB [ \-v ]
+.B \-d
+.I homedir
+.B \-g
+.I group
+.B \-s
+.I shell
+.I user
+.SH DESCRIPTION
+cm-user is a program for managing user state and configuration declaratively.
+.SH OPTIONS
+.TP
+.B \-a
+ensure user is absent
+.TP
+.B \-c comment
+ensure user comment is
+.I comment
+.TP
+.B \-d homedir
+ensure user homedir is
+.I homedir
+.TP
+.B \-g group
+ensure user group is
+.I group
+.TP
+.B \-n
+noop run. Do not commit changes
+.TP
+.B \-p pasword
+ensure user password is
+.I password
+.TP
+.B \-s shell
+ensure user shell is
+.I shell
+.TP
+.B \-u uid
+ensure user uid is
+.I uid
+.TP
+.B \-v
+verbose output
+.SH AUTHORS
+Copyright \(co 2015 by Virgin Operators Society
