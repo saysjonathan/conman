@@ -15,7 +15,7 @@ all: ${UOBJ} ${BINS}
 cm-%: src/%.c
 	cc -g -std=c99 -pedantic -Wall -O0 -I. -I/usr/include -I/usr/local/include -Wl,-rpath=/usr/local/lib -L/usr/lib -lc -L/usr/local/lib -lconman -o src/$@ ${UOBJ} $<
 
-install:
+install: all
 	@install -d ${BINPATH}
 	@install -d ${MANPATH}
 	@install -m 755 $(addprefix src/, ${BINS}) ${BINPATH}
