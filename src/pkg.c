@@ -9,6 +9,8 @@
 static char *type = "[pkg]";
 static char *pkg = NULL;
 static int state = CM_PRESENT;
+static int aflag = 0;
+static int lflag = 0;
 static int noop = 0;
 static int verbose = 0;
 
@@ -52,6 +54,7 @@ void usage(void) {
 			"Options:\n"
 			"\t-a, --absent         ensure package is uninstalled\n"
 			"\t-h, --help           display this message and exit\n"
+			"\t-l, --latest         intsall latest package version\n"
 			"\t-n, --noop           print but do not commit changes\n"
 			"\t-v, --verbose        enable verbose output\n");
 	exit(EXIT_FAILURE);
@@ -72,10 +75,13 @@ int main(int argc, char *argv[]) {
 		{NULL, 0, NULL, '\0'}
 	};
 
-	while((i = getopt_long(argc, argv, "ahnv", lopts, NULL)) != -1) {
+	while((i = getopt_long(argc, argv, "ahlnv", lopts, NULL)) != -1) {
 		switch(i) {
 			case 'a':
 				state = CM_ABSENT;
+				break;
+			case 'l':
+				lflag = 1;
 				break;
 			case 'n':
 				noop = 1;
@@ -88,15 +94,27 @@ int main(int argc, char *argv[]) {
 				usage();
 		}
 	}
+
 	pkg = argv[optind];
+	if(lflag && aflag) {
+		die("Cannot set '-l' and '-a' flag\nSee usage\n");
+	}
+	if(aflag) {
+		state = CM_ABSENT;
+	}
+	if(lflag) {
+		state = CM_LATEST;
+	}
 	if(pkg == NULL) {
 		usage();
 	}
+
 	if(verbose||noop) {
 		diff();
 	}
 	if(!noop) {
 		run();
 	}
+
 	exit(EXIT_SUCCESS);
 }
